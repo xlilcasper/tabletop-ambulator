@@ -1,4 +1,4 @@
-local target = 'https://tabletop-ambulator.herokuapp.com'
+local target = 'https://tabletop-ambulator.xlilcasper.com/'
 local numTries = 0
 local waitSeconds = { 5, 10 }
 
@@ -13,6 +13,9 @@ function handleResult(data)
         Wait.time(tryGetScript, waitSeconds[numTries])
     elseif numTries >= 2 then
         print('Something went wrong - please try reloading ambulator')
+        print('---Error---')
+        print(data.error)
+        print('---End Error---')
     else
         spawnObjectJSON({
             json = data.text
